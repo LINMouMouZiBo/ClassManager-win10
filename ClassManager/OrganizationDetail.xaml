@@ -20,7 +20,7 @@
 
     <Page.Resources>
         <converters:NameToNameCVT x:Key="nameToNameCVT"/>
-        <DataTemplate x:Key="NavMenuItemTemplate" x:DataType="local:NavMenuItem">
+        <DataTemplate x:Key="NavMenuItemTemplate" x:DataType="controls:NavMenuItem">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="48" />
@@ -95,11 +95,11 @@
 					<!-- A custom ListView to display the items in the pane.  The automation Name is set in the ContainerContentChanging event. -->
 					<Grid Grid.Row="0" Margin="48,0,0,0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Grid.Column="0" Source="{x:Bind OVM.Organization.image, Mode=OneWay}"  Height="50" Width="50" Margin="0, 0, 20, 0"/>
+                        <Image Grid.Column="0" Source="{x:Bind OVM.Organization.Image, Mode=OneWay}"  Height="50" Width="50" Margin="0, 0, 20, 0"/>
                         <TextBlock Grid.Column="1" Text="{x:Bind OVM.Organization.Name, Mode=OneWay, Converter={StaticResource nameToNameCVT}}"  VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
 
                         <!--<Button x:Name="SettingsNavPaneButton"

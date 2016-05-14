@@ -27,7 +27,7 @@
 			</StackPanel>
 		</Border>
 
-        <ListView Grid.Row="1" ItemsSource="{x:Bind OVM.Organization.members, Mode=OneWay}" ItemClick="OnItemClick" IsItemClickEnabled="True" SelectionMode="None">
+        <ListView Grid.Row="1" ItemsSource="{x:Bind OVM.Organization.Members, Mode=OneWay}" ItemClick="OnItemClick" IsItemClickEnabled="True" SelectionMode="None">
             <ListView.ItemTemplate>
 				<DataTemplate x:DataType="md:User">
 					<Grid>

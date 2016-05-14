@@ -53,7 +53,7 @@
 
                     <TextBlock Grid.Row="1" FontStyle="Italic" Margin="0,0,0,0"  HorizontalAlignment="Center" Text="作业"  FontSize="25"/>
                     <ScrollViewer Grid.Row="2">
-                        <ListView  ItemsSource="{x:Bind UVM.User.homeworks}" HorizontalAlignment="Center" SelectionMode="None">
+                        <ListView  ItemsSource="{x:Bind UVM.User.Homeworks}" HorizontalAlignment="Center" SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="md:UserHomework">
                                     <Grid Margin="10, 10, 10, 10">
@@ -103,7 +103,7 @@
 
                     <TextBlock Grid.Row="1" FontStyle="Italic" Margin="0,0,0,0" Text="班级"  HorizontalAlignment="Center"  FontSize="25"/>
                     <ScrollViewer Grid.Row="2">
-                        <ListView  x:Name="relationships" ItemsSource="{x:Bind UVM.User.relationships, Mode=OneWay}" HorizontalAlignment="Center" IsItemClickEnabled="True" ItemClick="relationships_ItemClick" SelectionMode="None">
+                        <ListView  x:Name="relationships" ItemsSource="{x:Bind UVM.User.Relationships, Mode=OneWay}" HorizontalAlignment="Center" IsItemClickEnabled="True" ItemClick="relationships_ItemClick" SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="md:Relationship">
                                     <Grid Margin="10, 10, 10, 10">

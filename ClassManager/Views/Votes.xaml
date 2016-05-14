@@ -42,7 +42,7 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Votes" Margin="48,8,8,8"
                            Style="{ThemeResource TitleTextBlockStyle}" />
-                    <AppBarButton x:Name="add_btn" Icon="Add" Click="AddButton_Click"></AppBarButton>
+                    <AppBarButton x:Name="add_btn" Icon="Add" Click="AddButton_Click" IsEnabled="{x:Bind isPowerful, Mode=OneWay}"></AppBarButton>
                 </StackPanel>
             </Border>
 

@@ -10,7 +10,7 @@
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<StackPanel x:Name="rootPanel">
             <StackPanel.Background>
-                <ImageBrush Stretch="Fill" ImageSource="LightColorful.jpg" />
+                <ImageBrush Stretch="Fill" ImageSource="../Resource/LightColorful.jpg" />
             </StackPanel.Background>
             <TextBlock FontSize="20" FontStyle="Italic"  Margin="20,20,58,0" Name="notice_text" Text="当前notice已经查看过"></TextBlock>
             <TextBlock FontSize="20" FontStyle="Italic"  Margin="20,20,58,0" Name="homework_text" Text="当前homework已经查看过"></TextBlock>

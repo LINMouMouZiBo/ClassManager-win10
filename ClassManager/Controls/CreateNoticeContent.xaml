@@ -12,16 +12,14 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto" Height="600">
 			<StackPanel x:Name="rootPanel">
 				<TextBox x:Name="name" FontStyle="Italic" Margin="20,20,112,0" Header="名称:"/>
-				<TextBlock FontStyle="Italic" Margin="20,20,112,0" Text="截止日期"></TextBlock>
-				<DatePicker FontStyle="Italic" Margin="20,20,112,0" x:Name="datePicker"/>
-                <TimePicker FontStyle="Italic" Margin="20,20,112,0" x:Name="timePicker"/>
-				<TextBox FontStyle="Italic" Width="300" TextWrapping="Wrap" Height="200" Margin="20,20,112,0" x:Name="content" Header="内容:"/>
-				<TextBlock FontStyle="Italic" Text="头像设置"  FontSize="30"/>
-                <Image x:Name="image" Source="{x:Bind OVM.Organization.Image, Mode=OneWay}" Height="180" Stretch="UniformToFill"/>
-				<RelativePanel>
-					<AppBarButton x:Name="SelectPictureButton" Click="SelectPictureButton_Click" Icon="Pictures" Label="select"/>
-					<Button x:Name="uploadBtn" Click="uploadBtn_Click" FontStyle="Italic" Content="upload" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
-				</RelativePanel>
+				<TextBlock FontStyle="Italic" Margin="20,20,20,0" Text="截止日期"></TextBlock>
+				<DatePicker FontStyle="Italic" Margin="20,20,20,0" x:Name="datePicker"/>
+                <TimePicker FontStyle="Italic" Margin="20,20,20,0" x:Name="timePicker"/>
+                <TextBox FontStyle="Italic" TextWrapping="Wrap" Height="200" Margin="20,20,20,20" x:Name="content" Header="内容:"/>
+                <Image x:Name="image" Stretch="UniformToFill"/>
+				<RelativePanel Margin="0, 0, 0, 30">
+                    <AppBarButton x:Name="SelectPictureButton" Click="SelectPictureButton_Click" Icon="Pictures" Label="select"/>
+                </RelativePanel>
 			</StackPanel>
         </ScrollViewer>
     </Grid>

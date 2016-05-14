@@ -29,6 +29,9 @@ namespace ClassManager.Views
     {
         private OrganizationViewModel OVM;
         private UserViewModel UVM;
+
+        bool isPowerful = false;
+
         public Votes ()
 		{
 			this.InitializeComponent();
@@ -39,17 +42,13 @@ namespace ClassManager.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             OVM.initialOVM((string)e.Parameter);
-            bool hasPowful = false;
+            isPowerful = false;
             foreach (var item in UVM.User.Relationships)
             {
                 if (item.account == OVM.Organization.Account && (item.position == "founder" || item.position == "manager"))
                 {
-                    hasPowful = true;
+                    isPowerful = true;
                 }
-            }
-            if (!hasPowful)
-            {
-                add_btn.Visibility = Visibility.Collapsed;
             }
         }
 

@@ -31,26 +31,27 @@ namespace ClassManager.ViewModels
 		private OrganizationViewModel ()
 		{
 			organization = new Organization();
-			organization.image = SingleService.Instance.getServerAddress() + "null";
+			organization.Image = SingleService.Instance.getServerAddress() + "null";
 		}
 
 		public async void initialOVM (string account)
 		{
 			Result res = await SingleService.Instance.searchOrganizationDetail(account);
 			if (!res.error) {
-				_instance.Organization.DeepCopy(res.organization_data);
-				_instance.Organization.image = SingleService.Instance.getServerAddress() + (_instance.Organization.image == null ? "null" : _instance.Organization.image);
-				foreach (var item in _instance.Organization.members) {
+                res.organization_data.image = SingleService.Instance.getServerAddress() + (res.organization_data.image == null ? "null" : res.organization_data.image);
+				foreach (var item in res.organization_data.members) {
 					item.image = SingleService.Instance.getServerAddress() + (item.image == null ? "null" : item.image);
 				}
-				foreach (var item in Organization.notices) {
+				foreach (var item in res.organization_data.notices) {
 					item.image = SingleService.Instance.getServerAddress() + (item.image == null ? "null" : item.image);
 					item.unlooksNum = item.unlooks.Count;
 				}
-				foreach (var item in Organization.Homeworks) {
+				foreach (var item in res.organization_data.Homeworks) {
 					item.unlooksNum = item.unlooks.Count;
 				}
-			} else {
+
+                Organization.DeepCopy(res.organization_data);
+            } else {
 				await new Windows.UI.Popups.MessageDialog(res.message).ShowAsync();
 			}
 		}
@@ -97,20 +98,25 @@ namespace ClassManager.ViewModels
 		{
 			Result result = await SingleService.Instance.searchOrganizationDetail(Organization.Account);
 
-			if (!result.error) {
-				Organization.DeepCopy(result.organization_data);
-				Organization.image = SingleService.Instance.getServerAddress() + (Organization.image == null ? "null" : Organization.image);
-				foreach (var item in Organization.members) {
-					item.image = SingleService.Instance.getServerAddress() + (item.image == null ? "null" : item.image);
-				}
-				foreach (var item in Organization.notices) {
-					item.image = SingleService.Instance.getServerAddress() + (item.image == null ? "null" : item.image);
-					item.unlooksNum = item.unlooks.Count;
-				}
-				foreach (var item in Organization.Homeworks) {
-					item.unlooksNum = item.unlooks.Count;
-				}
-			} else {
+			if (!result.error)
+            {
+                result.organization_data.image = SingleService.Instance.getServerAddress() + (result.organization_data.image == null ? "null" : result.organization_data.image);
+                foreach (var item in result.organization_data.members)
+                {
+                    item.image = SingleService.Instance.getServerAddress() + (item.image == null ? "null" : item.image);
+                }
+                foreach (var item in result.organization_data.notices)
+                {
+                    item.image = SingleService.Instance.getServerAddress() + (item.image == null ? "null" : item.image);
+                    item.unlooksNum = item.unlooks.Count;
+                }
+                foreach (var item in result.organization_data.Homeworks)
+                {
+                    item.unlooksNum = item.unlooks.Count;
+                }
+
+                Organization.DeepCopy(result.organization_data);
+            } else {
 				await new Windows.UI.Popups.MessageDialog("当前网络状况不佳").ShowAsync();
 			}
 		}
@@ -244,6 +250,7 @@ namespace ClassManager.ViewModels
             {
                 await new Windows.UI.Popups.MessageDialog("修改成功").ShowAsync();
 
+                UserViewModel.Instance.updateUser();
                 regetOrganization();
             }
             else
